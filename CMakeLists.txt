@@ -3,7 +3,8 @@ project(cpp_11_14_feature_test)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON) # For VS to organize the project in folders
 
-set (CMAKE_CXX_FLAS "${CMAKE_CXX_FLAGS} /W4")
+set( CMAKE_EXPORT_COMPILE_COMMANDS 1 )
+set (CMAKE_CXX_FLAS "${CMAKE_CXX_FLAGS}")
 
 message ("cxx flags: " ${CMAKE_CXX_FLAGS})
 

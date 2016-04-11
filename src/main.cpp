@@ -5,6 +5,7 @@
 #include "base.h"
 
 #include "static_assert_test.h"
+#include "brace_initialization_test.h"
 #include "constexpr_test.h"
 
 auto main() -> int
