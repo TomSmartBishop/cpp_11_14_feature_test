@@ -5,7 +5,7 @@ namespace constexpr_test
 {
 	//since C++11 we can use constexpr for methods and functions
 	//(and with C++14 they can be more than one-liner)
-	//so the compiler will evaluiate during compile time if possible (not guranteed)
+	//so the compiler will evaluate during compile time if possible (not guaranteed)
 	template<typename T>
 	constexpr auto pow(const T base, std::size_t exp) noexcept -> T
 	{
@@ -46,7 +46,8 @@ namespace constexpr_test
 	//when not declaring constexpr it depends on the compiler :'(
 	//this seems to be a grey area of the C++ standard, see discussion here:
 	//http://stackoverflow.com/questions/33993100/remove-constexpr-from-c14-template-specialization
-#if !defined(__clang__)
+	//maybe this improves with C++17 and constexpr_if
+#if defined(__GNUC__)
 	struct non_constexpr_type 
 	{
 	};
@@ -68,8 +69,8 @@ namespace constexpr_test
 
 		static_assert(pi<float> == 3.14159265358979f, "The two PIs should be the same");
 #endif
-		constexpr template_class<int> int_test{};
-		static_assert(int_test.get_member()==0, "The integer should be 0");
+		//constexpr template_class<int> int_test{};
+		//static_assert(int_test.get_member()==0, "The integer should be 0");
 	}
 
 		

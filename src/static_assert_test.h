@@ -4,7 +4,7 @@
 namespace static_assert_test
 {
 
-constexpr auto test() noexcept -> void
+	constexpr auto test() noexcept -> void
 	{
 		static_assert(sizeof(int) == 4, "We didn't expect int of other size than 4...");
 
@@ -16,6 +16,8 @@ constexpr auto test() noexcept -> void
 #endif
 
 		static_assert(sizeof(long long) == 8, "Really?");
+
+		//so let's better stick to std::int32_t, std::int64_t and friends...
 	}
 
 };
