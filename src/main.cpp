@@ -26,6 +26,8 @@ using fp::float32_t;
 #include "tests/auto_decltype_rangefor.h"
 #include "tests/trailing_returntype.h"
 #include "tests/noexcept_test.h"
+#include "tests/scoped_enums.h"
+#include "tests/default_override.h"
 #include "tests/constexpr_test.h"
 
 auto main() -> int32_t
@@ -40,6 +42,10 @@ auto main() -> int32_t
 
 	noexcept_test::test();
 	
+	scoped_enums::test();
+
+	default_override::test();
+
 	constexpr_test::test();
 
 	return 0;

@@ -1,5 +1,5 @@
-#ifndef __AUTO_TEST_H_
-#define __AUTO_TEST_H_
+#ifndef __AUTO_DECLTYPE_RANGEFOR_H_
+#define __AUTO_DECLTYPE_RANGEFOR_H_
 
 namespace auto_decltype_rangefor
 {
@@ -74,5 +74,5 @@ namespace auto_decltype_rangefor
 
 };
 
-#endif // __AUTO_TEST_H_
+#endif // __AUTO_DECLTYPE_RANGEFOR_H_
 

@@ -1,5 +1,5 @@
-#ifndef __TRAILING_RETURNTYPE_TEST_H_
-#define __TRAILING_RETURNTYPE_TEST_H_
+#ifndef __TRAILING_RETURNTYPE_H_
+#define __TRAILING_RETURNTYPE_H_
 
 namespace trailing_returntype
 {
@@ -131,5 +131,5 @@ namespace trailing_returntype
 
 };
 
-#endif //__NOEXCEPT_TEST_H_
+#endif //__TRAILING_RETURNTYPE_H_
 

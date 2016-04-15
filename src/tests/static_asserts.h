@@ -1,5 +1,5 @@
-#ifndef __STATIC_ASSERT_TEST_H_
-#define __STATIC_ASSERT_TEST_H_
+#ifndef __STATIC_ASSERT_H_
+#define __STATIC_ASSERT_H_
 
 namespace static_asserts
 {
@@ -22,4 +22,4 @@ namespace static_asserts
 
 };
 
-#endif //__STATIC_ASSERT_TEST_H_
+#endif //__STATIC_ASSERT_H_

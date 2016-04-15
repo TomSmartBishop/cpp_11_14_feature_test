@@ -1,5 +1,5 @@
-#ifndef __BRACE_INITIALIZATION_TEST_H_
-#define __BRACE_INITIALIZATION_TEST_H__
+#ifndef __BRACE_INITIALIZATION_H_
+#define __BRACE_INITIALIZATION_H_
 
 namespace brace_initialization
 {
@@ -26,5 +26,5 @@ namespace brace_initialization
 
 };
 
-#endif // __BRACE_INITIALIZATION_TEST_H_
+#endif // __BRACE_INITIALIZATION_H_
 
