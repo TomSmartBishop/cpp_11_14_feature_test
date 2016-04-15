@@ -1,7 +1,7 @@
 #ifndef __TRAILING_RETURNTYPE_TEST_H_
 #define __TRAILING_RETURNTYPE_TEST_H_
 
-namespace trailing_returntype_and_decltype
+namespace trailing_returntype
 {
 	//traditionally I would define a function like this:
 	int32_t calculate_something()
@@ -63,8 +63,6 @@ namespace trailing_returntype_and_decltype
 	template<typename T>
 	auto calculate_something_unknown_cpp11(const T& a, const T & b) -> decltype(a.dot_cpp11_style(b))
 	{
-		//Also decltype is new since C++11 and it is mainly used to figure out the 
-		//type of an expression for template method return types.
 		return a.dot_cpp11_style(b);
 	}
 
@@ -93,7 +91,7 @@ namespace trailing_returntype_and_decltype
 		//Now we will never return a reference, but always a copy of a[0].
 		//Nobody of course would use a function like this but, there are a lot of cases
 		//were you will want to work on a reference instead of a copy of an object.
-		//I recommend reading the whole story about 'dectype' in the book
+		//I recommend reading the whole story about 'auto' and 'dectype' in the book
 		//"Effective Modern C++" in Item 3 (by Scott Meyers)
 		return a[0];
 	}

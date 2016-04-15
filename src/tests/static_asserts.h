@@ -1,7 +1,7 @@
 #ifndef __STATIC_ASSERT_TEST_H_
 #define __STATIC_ASSERT_TEST_H_
 
-namespace static_assert_test
+namespace static_asserts
 {
 
 	constexpr auto test() noexcept -> void

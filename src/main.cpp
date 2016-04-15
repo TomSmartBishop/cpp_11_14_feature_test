@@ -6,6 +6,8 @@
 #include <limits>  //for std::numeric_limits
 #include <algorithm> //for std::move
 #include <stdexcept> //for some noexcept code
+#include <vector> //for std::vector
+#include <typeinfo> //for typeid
 
 //basic stuff to get started
 #include "base.h"
@@ -19,24 +21,25 @@ using std::int32_t;
 using fp::float32_t;
 
 //all out feature tests
-#include "trailing_returntype_and_decltype.h"
-#include "noexcept_test.h"
-#include "static_assert_test.h"
-#include "brace_initialization_test.h"
-#include "constexpr_test.h"
+#include "tests/static_asserts.h"
+#include "tests/brace_initialization.h"
+#include "tests/auto_decltype_rangefor.h"
+#include "tests/trailing_returntype.h"
+#include "tests/noexcept_test.h"
+#include "tests/constexpr_test.h"
 
 auto main() -> int32_t
 {
-	//auto
+	static_asserts::test();
 
-	trailing_returntype_and_decltype::test();
+	brace_initialization::test();
+
+	auto_decltype_rangefor::test();
+
+	trailing_returntype::test();
 
 	noexcept_test::test();
-
-	static_assert_test::test();
-
-	brace_initialization_test::test();
-
+	
 	constexpr_test::test();
 
 	return 0;

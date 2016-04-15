@@ -9,9 +9,10 @@ set (CMAKE_CXX_FLAS "${CMAKE_CXX_FLAGS}")
 message ("cxx flags: " ${CMAKE_CXX_FLAGS})
 
 file (GLOB SOURCES "src/*.cpp" "src/*.h")
+file (GLOB TEST_SOURCES "src/tests/*.h")
 
 source_group ("src" FILES ${SOURCES})
-
+source_group ("src/tests" FILES ${TEST_SOURCES})
 
 set (VERSION_NUMBER 0.1)
 
@@ -20,5 +21,5 @@ configure_file (
   "${PROJECT_SOURCE_DIR}/src/generated/config.h"
 )
 
-add_executable(cpp_test ${SOURCES})
+add_executable(cpp_test ${SOURCES} ${TEST_SOURCES})
 
