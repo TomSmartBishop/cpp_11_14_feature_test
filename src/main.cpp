@@ -8,6 +8,7 @@
 #include <stdexcept> //for some noexcept code
 #include <vector> //for std::vector
 #include <typeinfo> //for typeid
+#include <cstring> //for std::strcmp
 
 //basic stuff to get started
 #include "base.h"

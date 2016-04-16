@@ -4,24 +4,24 @@
 namespace noexcept_test
 {
 	//there won't be an exception thrown in here
-	auto add(int32_t a, int32_t b) noexcept -> int32_t
+	auto add(auto a, auto b) noexcept -> decltype(a+b)
 	{
 		return a + b;
 	}
 
 	//if we do throw the compiler will warn us (but still compiles + crashes)
-	auto div_noexcept(float32_t a, float32_t b) noexcept -> float32_t
+	auto div_noexcept(auto a, auto b) noexcept -> decltype(a/b)
 	{
-		if (b == 0.0f)
+		if (b == 0)
 			throw std::runtime_error("division by zero!");
 		return a / b;
 	}
 
 	//can be expressed conditionally... (using templates we can do even smarter things here)
-	auto div_except(float32_t a, float32_t b) noexcept(false) -> float32_t
+	auto div_except(auto a, auto b) noexcept(false) -> decltype(a/b)
 	{
 		//if we throw here the compiler will warn us (but still compiles)
-		if (b == 0.0f)
+		if (b == 0)
 			throw std::runtime_error("division by zero!");
 		return a / b;
 	}
