@@ -3,8 +3,12 @@ project(cpp_11_14_feature_test)
 
 set_property(GLOBAL PROPERTY USE_FOLDERS ON) # For VS to organize the project in folders
 
-set( CMAKE_EXPORT_COMPILE_COMMANDS 1 )
-set (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+# We need C++14
+set(CMAKE_CXX_STANDARD 14)
+set(CMAKE_CXX_STANDARD_REQUIRED on)
+# But that seems to fail sometimes so we also add this flag
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14") # Not sure what VS will say about that...
+set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 
 message ("cxx flags: " ${CMAKE_CXX_FLAGS})
 
