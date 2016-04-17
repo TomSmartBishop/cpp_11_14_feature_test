@@ -12,17 +12,16 @@ addons:
     - gcc-5
     - g++-5
     - clang-3.6
+
 # Enable C++ support
 language: cpp
-# Compiler selection
-compiler:
-  - clang
-  - gcc
 # Build steps
 script:
   - mkdir build
   - cd build
   - cmake .. && make
+
+# Compiler selection
 matrix:
   include:
     - compiler: gcc
