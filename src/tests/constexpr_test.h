@@ -47,7 +47,7 @@ namespace constexpr_test
 	//this seems to be a grey area of the C++ standard, see discussion here:
 	//http://stackoverflow.com/questions/33993100/remove-constexpr-from-c14-template-specialization
 	//maybe this improves with C++17 and constexpr_if
-#if defined(__GNUC__)
+#if defined(__GNUC__) && ! defined(__clang__)
 	struct non_constexpr_type 
 	{
 	};
