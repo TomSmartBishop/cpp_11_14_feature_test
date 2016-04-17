@@ -9,6 +9,8 @@ set(CMAKE_CXX_STANDARD_REQUIRED on)
 # But that seems to fail sometimes so we also add this flag
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -stdlib=libc++ -std=c++14") #VS will ignore the additional flags
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
+# Looks like clang needs dome extras to find the stdlib
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
 
 message ("cxx flags: " ${CMAKE_CXX_FLAGS})
 
