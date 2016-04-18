@@ -17,11 +17,17 @@ addons:
     - gcc-5
     - g++-5
     - clang-3.8
-    - libstdc++6
+    - libstdc++-5-dev
 
 # Force GCC5
 install:
-    - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
+  - export CXXFLAGS="-std=c++14"
+  - if [ "${LIBCXX}" != "" ]; then (svn --quiet co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
+    && cd libcxx/lib && ./buildit && ln -f -s libc++.so.1.0 libc++.so.1)
+    && export CXXFLAGS="${CXXFLAGS -stdlib=libc++ -I${TRAVIS_BUILD_DIR}/libcxx/include"
+    && export LDFLAGS="-L${TRAVIS_BUILD_DIR}/libcxx/lib -lc++"
+    && export LD_LIBRARY_PATH="${TRAVIS_BUILD_DIR}/libcxx/lib:$LD_LIBRARY_PATH"; fi
+        #    - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
 
 # Build steps
 script:
@@ -32,14 +38,14 @@ script:
 # Run multile compilers
 matrix:
   include:
-    - compiler: gcc
-      addons:
-        apt:
-          sources:
-            - ubuntu-toolchain-r-test
-          packages:
-            - g++-5
-      env: COMPILER_NAME=gcc CXX=g++-5 CC=gcc-5
+          #    - compiler: gcc
+          #      addons:
+          #        apt:
+          #          sources:
+          #            - ubuntu-toolchain-r-test
+          #          packages:
+          #            - g++-5
+          #      env: COMPILER_NAME=gcc CXX=g++-5 CC=gcc-5
     - compiler: clang
       addons:
         apt:

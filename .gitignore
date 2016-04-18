@@ -1,2 +1,5 @@
 build/
+.kdev4/
+.vscode/
 src/generated/
+*.kdev4
