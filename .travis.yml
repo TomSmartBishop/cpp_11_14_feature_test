@@ -1,9 +1,13 @@
 language: c++
-sudo: false
+sudo: required
 matrix:
   include:
     - os: linux
+      env: COMPILER_NAME=clang CXX=clang++-3.7 CC=clang-3.7
       compiler: clang
+      before_install:
+        - if [ "$CC"  != "clang-3.7"   ]; then export CC=clang-3.7; fi
+        - if [ "$CXX" != "clang++-3.7" ]; then export CXX=clang++-3.7; fi
       addons:
         apt:
           sources:
@@ -14,7 +18,11 @@ matrix:
             - clang-3.8
             - g++-5
     - os: linux
+      env: COMPILER_NAME=gcc CXX=g++-5 CC=gcc-5
       compiler: gcc
+      before_install:
+        - if [ "$CC"  != "gcc-5"     ]; then export CC=gcc-5; fi
+        - if [ "$CXX" != "g++-5"     ]; then export CXX=g++-5; fi
       addons:
         apt:
           sources:
@@ -24,11 +32,6 @@ matrix:
 cache:
   apt: true
 
-before_install:
-  - if [ "$CC"  == "gcc"     ]; then export CC=gcc-5; fi
-  - if [ "$CXX" == "g++"     ]; then export CXX=g++-5; fi
-  - if [ "$CC"  == "clang"   ]; then export CC=clang-3.7; fi
-  - if [ "$CXX" == "clang++" ]; then export CXX=clang++-3.7; fi
 #  - export CXXFLAGS="-std=c++14 -stdlib=libc++"
 
 script:
