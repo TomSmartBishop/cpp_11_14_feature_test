@@ -17,6 +17,7 @@ addons:
     - gcc-5
     - g++-5
     - clang-3.8
+    - libstdc++6
 
 # Force GCC5
 install:
