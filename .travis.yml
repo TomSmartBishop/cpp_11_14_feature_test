@@ -1,56 +1,44 @@
-# Ubuntu 14.04 Trusty support
-sudo: required
-dist: trusty
-
-# Enable C++ support
-language: cpp
-
-# We need more...
-addons:
-  apt:
-    sources:
-    # add PPAs with more up-to-date toolchains
-    - ubuntu-toolchain-r-test
-    - llvm-toolchain-precise-3.8
-    packages:
-    # install toolchains
-    #- gcc-5
-    #- g++-5
-    - clang-3.8
-      #- libstdc++-6-dev
-
-# Force GCC5
-install:
-  - (svn --quiet co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
-    && cd libcxx/lib && ./buildit && ln -f -s libc++.so.1.0 libc++.so.1)
-    && export CXXFLAGS="${-std=c++14 -stdlib=libc++ -I${TRAVIS_BUILD_DIR}/libcxx/include"
-    && export LDFLAGS="-L${TRAVIS_BUILD_DIR}/libcxx/lib -lc++"
-    && export LD_LIBRARY_PATH="${TRAVIS_BUILD_DIR}/libcxx/lib:$LD_LIBRARY_PATH"; fi
-        #    - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
-
-# Build steps
-script:
-  - mkdir build
-  - cd build
-  - cmake .. && make
-
-# Run multile compilers
+language: c++
+sudo: false
 matrix:
   include:
-          #    - compiler: gcc
-          #      addons:
-          #        apt:
-          #          sources:
-          #            - ubuntu-toolchain-r-test
-          #          packages:
-          #            - g++-5
-          #      env: COMPILER_NAME=gcc CXX=g++-5 CC=gcc-5
-    - compiler: clang
+    - os: linux
+      compiler: clang
       addons:
         apt:
           sources:
             - ubuntu-toolchain-r-test
-            - llvm-toolchain-precise-3.8
+            - llvm-toolchain-precise
+            - llvm-toolchain-precise-3.7
           packages:
             - clang-3.8
-      env: COMPILER_NAME=clang CXX=clang++-3.8 CC=clang-3.8
+            - g++-5
+    - os: linux
+      compiler: gcc
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            - g++-5
+cache:
+  apt: true
+
+before_install:
+  - if [ "$CC"  == "gcc"     ]; then export CC=gcc-5; fi
+  - if [ "$CXX" == "g++"     ]; then export CXX=g++-5; fi
+  - if [ "$CC"  == "clang"   ]; then export CC=clang-3.7; fi
+  - if [ "$CXX" == "clang++" ]; then export CXX=clang++-3.7; fi
+#  - export CXXFLAGS="-std=c++14 -stdlib=libc++"
+
+script:
+  - cmake --version
+  - $CC --version
+  - $CXX --version
+  - mkdir build
+  - cd build
+  - cmake .. && make
+
+notifications:
+  email: false
+
