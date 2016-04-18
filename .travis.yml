@@ -10,21 +10,20 @@ addons:
   apt:
     sources:
     # add PPAs with more up-to-date toolchains
-    - ubuntu-toolchain-r-test
+    #- ubuntu-toolchain-r-test
     - llvm-toolchain-precise-3.8
     packages:
     # install toolchains
-    - gcc-5
-    - g++-5
+    #- gcc-5
+    #- g++-5
     - clang-3.8
-    - libstdc++-5-dev
+      #- libstdc++-6-dev
 
 # Force GCC5
 install:
-  - export CXXFLAGS="-std=c++14"
-  - if [ "${LIBCXX}" != "" ]; then (svn --quiet co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
+  - (svn --quiet co http://llvm.org/svn/llvm-project/libcxx/trunk libcxx
     && cd libcxx/lib && ./buildit && ln -f -s libc++.so.1.0 libc++.so.1)
-    && export CXXFLAGS="${CXXFLAGS -stdlib=libc++ -I${TRAVIS_BUILD_DIR}/libcxx/include"
+    && export CXXFLAGS="${-std=c++14 -stdlib=libc++ -I${TRAVIS_BUILD_DIR}/libcxx/include"
     && export LDFLAGS="-L${TRAVIS_BUILD_DIR}/libcxx/lib -lc++"
     && export LD_LIBRARY_PATH="${TRAVIS_BUILD_DIR}/libcxx/lib:$LD_LIBRARY_PATH"; fi
         #    - if [ "$CXX" = "g++" ]; then export CXX="g++-5" CC="gcc-5"; fi
@@ -50,7 +49,7 @@ matrix:
       addons:
         apt:
           sources:
-            - ubuntu-toolchain-r-test
+                  #   - ubuntu-toolchain-r-test
             - llvm-toolchain-precise-3.8
           packages:
             - clang-3.8
