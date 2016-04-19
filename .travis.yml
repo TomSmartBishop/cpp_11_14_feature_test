@@ -1,5 +1,6 @@
 language: c++
 sudo: required
+
 matrix:
   include:
     - os: linux
@@ -8,7 +9,6 @@ matrix:
       before_install:
         - export CC=clang-3.7
         - export CXX=clang++-3.7
-#        - export CXXFLAGS="-std=c++14 -stdlib=libc++"
       addons:
         apt:
           sources:
@@ -23,7 +23,6 @@ matrix:
       before_install:
         - export CC=gcc-5
         - export CXX=g++-5
- #       - export CXXFLAGS="-std=c++14 -stdlib=libc++"
       addons:
         apt:
           sources:
@@ -43,5 +42,5 @@ script:
   - cmake .. && make
 
 notifications:
-  email: false
+  email: true
 

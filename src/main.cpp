@@ -29,6 +29,7 @@ using fp::float32_t;
 #include "tests/noexcept_test.h"
 #include "tests/scoped_enums.h"
 #include "tests/default_override.h"
+#include "tests/lambdas.h"
 #include "tests/constexpr_test.h"
 
 auto main() -> int32_t
@@ -46,6 +47,8 @@ auto main() -> int32_t
 	scoped_enums::test();
 
 	default_override::test();
+	
+	lambda::test();
 
 	constexpr_test::test();
 
