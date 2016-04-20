@@ -41,6 +41,10 @@ script:
   - cd build
   - cmake .. && make
 
+after_success:
+  - ./cpp_test
+  - bash <(curl -s https://codecov.io/bash)
+
 notifications:
   email: true
 
