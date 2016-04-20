@@ -40,9 +40,10 @@ script:
   - mkdir build
   - cd build
   - cmake .. && make
+  - ./cpp_test
+  - gcov src/main.cpp 
 
 after_success:
-  - ./cpp_test
   - bash <(curl -s https://codecov.io/bash)
 
 notifications:
