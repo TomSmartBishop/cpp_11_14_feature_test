@@ -3,7 +3,6 @@
 
 namespace brace_initialization
 {
-
 	auto test() -> void
 	{
 		//new way of initialization since the 'old' way is not really uniform

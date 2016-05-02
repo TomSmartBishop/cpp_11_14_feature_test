@@ -22,6 +22,12 @@ source_group ("src/tests" FILES ${TEST_SOURCES})
 
 set (VERSION_NUMBER 0.1)
 
+if (WIN32)
+	set(PLATFORM _WIN32)
+else()
+    set(PLATFORM _LINUX)
+endif()
+
 configure_file (
   "${PROJECT_SOURCE_DIR}/cmake/config.h.in" #The template to generate the actual header
   "${PROJECT_SOURCE_DIR}/src/generated/config.h"
