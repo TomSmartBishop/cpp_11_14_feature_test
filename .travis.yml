@@ -42,10 +42,9 @@ script:
   - mkdir build
   - cd build
   - cmake .. && make
-  - ./cpp_test && cd ..
+  - ./cpp_test
   - ls -al
-  - ls -al src/*
-  - gcov src/main.cpp 
+  - gcov main.cpp 
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
