@@ -7,7 +7,7 @@ set_property(GLOBAL PROPERTY USE_FOLDERS ON) # For VS to organize the project in
 set(CMAKE_CXX_STANDARD 14)
 set(CMAKE_CXX_STANDARD_REQUIRED on)
 # But that seems to fail sometimes so we also add this flag
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -O0 --coverage -fno-inline -fno-inline-small-functions -fno-default-inline") #MSVC will ignore these additional flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14 -O0 -fprofile-arcs -ftest-coverage -fno-inline -fno-inline-small-functions -fno-default-inline") #MSVC will ignore these additional flags
 set(CMAKE_EXPORT_COMPILE_COMMANDS 1)
 # Looks like clang needs dome extras to find the stdlib
 #set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -stdlib=libc++ -lc++abi")
